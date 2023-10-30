@@ -14,7 +14,7 @@ This Airflow DAG (Directed Acyclic Graph) is designed to perform an ETL (Extract
 
 The project is structured as follows:
 
-- `dags/etl_currency_rates_dag.py`: The Airflow DAG file that orchestrates the ETL process.
+- `dags/finpro.py`: The Airflow DAG file that orchestrates the ETL process.
 - `extract.py`: Contains the logic for data extraction.
 - `transform.py`: Contains the logic for data transformation.
 - `load.py`: Contains the logic for data loading.
