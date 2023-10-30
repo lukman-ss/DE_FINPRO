@@ -36,3 +36,26 @@ The Airflow DAG is configured with the following parameters:
 ```bash
 pip install apache-airflow
 ```
+
+## Usage
+Place the DAG file (finpro.py) in your Airflow DAGs directory.
+Ensure that the required dependencies are installed and configured.
+Start your Airflow scheduler and worker.
+The DAG should run on the specified schedule interval.
+
+## Customization
+You may need to customize the following aspects of the project:
+
+Configuration variables in your DAG file (e.g., API endpoints, database connection details).
+The data extraction logic in extract.py.
+The data transformation logic in transform.py.
+The data loading logic in load.py.
+
+## License
+This project is licensed under the MIT License. See the LICENSE file for details.
+
+## Author
+Lukman
+
+## Acknowledgments
+Apache Airflow: Open-source platform for orchestrating complex workflows.
