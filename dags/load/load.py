@@ -71,29 +71,6 @@ class Load:
         Load.save_csv_with_backup(csv_file_path, extract_df)
 
     @staticmethod
-    def load_currency_data_pg_neon(**kwargs):
-        """
-        Load currency data to a PostgreSQL database.
-
-        Args:
-            **kwargs: Keyword arguments provided by Airflow.
-
-        This function pulls data from the 'transform_currency_data' task and inserts it into a PostgreSQL database.
-
-        """
-        ti = kwargs['ti']
-        data_list = ti.xcom_pull(task_ids='transform_currency_data')
-        df = pd.DataFrame(data_list)
-        pg_hook = PostgresHook(postgres_conn_id='neondb_pg')
-        pg_hook.insert_rows(table=Variable.get("NEON_DB_TABLE"), schema=Variable.get("NEON_DB_SCHEMA"), rows=df.values, target_fields=list(df.columns))
-        
-        connection_uri = PostgresHook(postgres_conn_id='neondb_pg').get_uri()
-        connection_uri_with_ssl = connection_uri + "?sslmode=require"
-
-        pg_hook = PostgresHook(postgres_conn_id='neondb_pg', conn_type="gcp_sql", sslmode="require")
-        pg_hook.insert_rows(table=Variable.get("NEON_DB_TABLE"), schema=Variable.get("NEON_DB_SCHEMA"), rows=df.values, target_fields=list(df.columns))
-
-    @staticmethod
     def save_csv_with_backup(csv_file_path, data):
         """
         Save DataFrame to a CSV file with backup and folder creation.
