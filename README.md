@@ -15,9 +15,11 @@ This Airflow DAG (Directed Acyclic Graph) is designed to perform an ETL (Extract
 The project is structured as follows:
 
 - `dags/finpro.py`: The Airflow DAG file that orchestrates the ETL process.
-- `extract.py`: Contains the logic for data extraction.
-- `transform.py`: Contains the logic for data transformation.
-- `load.py`: Contains the logic for data loading.
+  - `extract/extract.py`: Contains the logic for data extraction.
+  - `transform/transform.py`: Contains the logic for data transformation.
+  - `load/load.py`: Contains the logic for data loading.
+- `sql/data_viz_query.sql`: This file contains SQL queries used to retrieve and structure data for creating visualizations, like charts and graphs.
+- `sql/exchange_rates.sql`: In this file, you'll find SQL queries that deal with exchange rate data. These queries are used to work with exchange rate information, like extracting and transforming it for storage or analysis.
 
 ## DAG Configuration
 
