@@ -43,9 +43,9 @@ with DAG('etl_currency_rates_dag', default_args=default_args, schedule_interval=
     )
 
     # Define the task for loading currency data to a PostgreSQL database (neon)
-    load_task_neon = PythonOperator(
+    load_task_bq = PythonOperator(
         task_id='load_currency_pg',
-        python_callable=Load.load_currency_data_pg_neon,
+        python_callable=Load.load_currency_data_bigquery,
         provide_context=True,
     )
 
@@ -53,6 +53,6 @@ with DAG('etl_currency_rates_dag', default_args=default_args, schedule_interval=
     end_task = DummyOperator(task_id='end_task')
 
     # Set up the task dependencies by defining the execution order
-    start_task >> extract_task >> transform_task >> [load_task_staging , load_task_neon] >> end_task
+    start_task >> extract_task >> transform_task >> [load_task_staging , load_task_bq] >> end_task
 
 # Note: Make sure you have the necessary import statements, functions, and modules (Extract, Transform, Load) defined in your custom scripts (extract.py, transform.py, load.py)
