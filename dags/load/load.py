@@ -4,6 +4,7 @@ import time
 from datetime import datetime, timedelta
 import os
 from airflow.models import Variable
+from google.cloud import bigquery
 
 class Load:
     """
@@ -11,6 +12,43 @@ class Load:
 
     It includes methods for loading data to a CSV file and to a PostgreSQL database.
     """
+    @staticmethod
+    def load_currency_data_bigquery(**kwargs):
+        """
+        Load currency data to Google BigQuery.
+
+        Args:
+            **kwargs: Keyword arguments provided by Airflow.
+
+        This function pulls data from the 'transform_currency_data' task and inserts it into Google BigQuery.
+
+        """
+        ti = kwargs['ti']
+        data_list = ti.xcom_pull(task_ids='transform_currency_data')
+
+        # Construct a BigQuery client object.
+        client = bigquery.Client()
+
+        # TODO(developer): set project dataset dan table di variable
+        table = Variable.get("PROJECT") + '.' +Variable.get("DATASET") + '.' + Variable.get("TABLE") 
+
+        dataframe = pd.DataFrame(data_list)
+        job_config = bigquery.LoadJobConfig(
+            autodetect=True,
+            write_disposition="WRITE_APPEND",
+        )
+
+        job = client.load_table_from_dataframe(
+            dataframe, table, job_config=job_config
+        )  # Make an API request.
+        job.result()  # Wait for the job to complete.
+
+        table = client.get_table(table)  # Make an API request.
+        print(
+            "Loaded {} rows and {} columns to {}".format(
+                table.num_rows, len(table.schema), table
+            )
+        )
 
     @staticmethod
     def load_currency_data(**kwargs):
@@ -47,6 +85,12 @@ class Load:
         data_list = ti.xcom_pull(task_ids='transform_currency_data')
         df = pd.DataFrame(data_list)
         pg_hook = PostgresHook(postgres_conn_id='neondb_pg')
+        pg_hook.insert_rows(table=Variable.get("NEON_DB_TABLE"), schema=Variable.get("NEON_DB_SCHEMA"), rows=df.values, target_fields=list(df.columns))
+        
+        connection_uri = PostgresHook(postgres_conn_id='neondb_pg').get_uri()
+        connection_uri_with_ssl = connection_uri + "?sslmode=require"
+
+        pg_hook = PostgresHook(postgres_conn_id='neondb_pg', conn_type="gcp_sql", sslmode="require")
         pg_hook.insert_rows(table=Variable.get("NEON_DB_TABLE"), schema=Variable.get("NEON_DB_SCHEMA"), rows=df.values, target_fields=list(df.columns))
 
     @staticmethod
