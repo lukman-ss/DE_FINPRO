@@ -69,7 +69,7 @@ The data loading logic in load.py.
 - Table Directory
 ![Table Directory Screenshot.](ss/table_dir.jpeg)
 - ETL Currency Rates DAGs
-![ETL Currency Rates DAGs Screenshot.](ss/etl_currency_rates_dag.jpeg)
+![ETL Currency Rates DAGs Screenshot.](ss/etl_currency_rates_dag_s.jpeg)
 
 ## License
 This project is licensed under the MIT License. See the LICENSE file for details.
