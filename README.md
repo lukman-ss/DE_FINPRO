@@ -31,6 +31,9 @@ The Airflow DAG is configured with the following parameters:
 - **Schedule Interval**: Hourly (schedule_interval='@hourly')
 - **Catchup**: Disabled (catchup=False)
 
+## Dashboard
+- https://lookerstudio.google.com/u/0/reporting/2ae9e0c9-6a27-49a8-b757-0d803c80937a/page/8lwgD
+
 ## Installation
 
 1. Install Python 3.x if not already installed.
