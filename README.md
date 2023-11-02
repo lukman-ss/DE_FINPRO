@@ -20,7 +20,6 @@ The project is structured as follows:
   - `load/load.py`: Contains the logic for data loading.
 - `sql/data_viz_query.sql`: This file contains SQL queries used to retrieve and structure data for creating visualizations, like charts and graphs.
 - `sql/exchange_rates.sql`: Base Export exchange rates table.
-- `data/currency_rates/2023-11-02 00`: 
 - `data/currency_rates/{%Y-%m-%d %H}.csv` is a file that contains currency exchange rates data.
 
 ## DAG Configuration
