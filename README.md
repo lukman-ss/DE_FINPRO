@@ -58,7 +58,7 @@ The data transformation logic in transform.py.
 The data loading logic in load.py.
 
 ## Screenshot
-![DAGs Screenshot.]([https://myoctocat.com/assets/images/base-octocat.svg](https://github.com/lukman-ss/DE_FINPRO/blob/main/ss/DAGs.jpeg))
+![DAGs Screenshot.]([https://myoctocat.com/assets/images/base-octocat.svg](ss/DAGs.jpeg))
 
 ## License
 This project is licensed under the MIT License. See the LICENSE file for details.
