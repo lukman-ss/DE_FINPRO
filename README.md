@@ -61,7 +61,7 @@ The data loading logic in load.py.
 - DAGs
 ![DAGs Screenshot.](ss/DAGs.jpeg)
 - Looker Studio Dashboard
-![Looker Studio Dashboard Screenshot.](ss/Looker Studio Dashboard.jpeg)
+![Looker Studio Dashboard Screenshot.](ss/Looker%20Studio%20Dashboard.jpeg)
 - Airflow Variable
 ![Airflow Variable Screenshot.](ss/airflow_variable.jpeg)
 - Currency Directory
