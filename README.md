@@ -10,6 +10,9 @@ This Airflow DAG (Directed Acyclic Graph) is designed to perform an ETL (Extract
 - Apache Airflow
 - Dependencies defined in your Airflow environment
 
+## Data Pipeline Overview
+![data_pipeline.](ss/data_pipeline.png)
+
 ## Project Structure
 
 The project is structured as follows:
