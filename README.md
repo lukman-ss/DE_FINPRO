@@ -2,7 +2,7 @@
 
 ## Overview
 
-This Airflow DAG (Directed Acyclic Graph) is designed to perform an ETL (Extract, Transform, Load) process for retrieving and handling currency rate data. It extracts data from an external API, transforms it, and then loads it into a destination, which can include both a CSV file and a PostgreSQL database.
+This Airflow DAG (Directed Acyclic Graph) is designed to perform an ETL (Extract, Transform, Load) process for retrieving and handling currency rate data. It extracts data from an external API, transforms it, and then loads it into a destination, which can include both a CSV file and a BigQuery database.
 
 ## Prerequisites
 
